@@ -86,10 +86,14 @@ clf.fit(X_train, y_train)
 
 print(clf.best_params_)
 """
-C_list = [10**(-7), 10**(-6), 10**(-5),10**(-4),10**(-3), 10**(-2), 10**(-1)]
+C_list = [10**(-7), 10**(-6), 10**(-5),10**(-4),10**(-3), 10**(-2), 10**(-1),1,10]
 parameters = {'C': C_list}
 svc = svm.SVC(kernel='poly')
 clf = GridSearchCV(svc, parameters, cv=5)
 clf.fit(X_train, y_train)
 
 print(clf.best_params_)
+
+svc = svm.SVC(kernel = 'poly', C = clf.best_params_['C'])
+svc.fit(X_train, y_train)
+svc.score(data_X, data_Y)
