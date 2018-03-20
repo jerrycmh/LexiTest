@@ -45,7 +45,7 @@ print(data_X.shape)
 print(data_Y.shape)
 
 ratio = 0.2
-X_train, X_test, y_train, y_test = train_test_split(data_X, data_Y, test_size=ratio, random_state=0)
+X_test, X_train, y_test, y_train = train_test_split(data_X, data_Y, test_size=ratio, random_state=0)
 print(X_train.shape)
 print(y_train.shape)
 print(X_test.shape)
@@ -86,7 +86,7 @@ clf.fit(X_train, y_train)
 
 print(clf.best_params_)
 """
-C_list = [1, 10]
+C_list = [10**(-3), 10**(-2), 10**(-1)]
 parameters = {'C': C_list}
 svc = svm.SVC(kernel='poly')
 clf = GridSearchCV(svc, parameters, cv=5)
